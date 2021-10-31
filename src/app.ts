@@ -8,7 +8,7 @@ export default function server(): Express {
 	// routes
 	app.use('/', (req: Request, resp: Response) => {
 		resp.status(200).json('hey Im here.');
-	})
+	});
 
 	return app;
 }

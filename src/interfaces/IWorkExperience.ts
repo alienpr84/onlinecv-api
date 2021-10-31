@@ -1,4 +1,4 @@
-import { ISkill } from "./ISkill";
+import { ISkill } from './ISkill';
 
 export interface IWorkExperience {
 	companyName: string;
