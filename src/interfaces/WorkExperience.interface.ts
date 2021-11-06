@@ -1,10 +1,10 @@
-import { ISkill } from './ISkill';
+import Skill from './Skill.interface';
 
-export interface IWorkExperience {
+export default interface WorkExperience {
 	companyName: string;
 	dateStart: Date;
 	dateEnd: Date;
 	position: string;
-	skills: ISkill[];
+	skills: Skill[];
 	description: string;
 }

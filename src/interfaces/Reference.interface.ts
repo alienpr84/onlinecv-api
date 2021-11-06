@@ -1,4 +1,4 @@
-export interface IReference {
+export default interface Reference {
 	name: string;
 	position: string;
 	email: string;

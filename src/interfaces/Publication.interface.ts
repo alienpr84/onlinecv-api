@@ -1,4 +1,4 @@
-export interface IPublication {
+export default interface Publication {
 	title: string;
 	description: string;
 	link: string;

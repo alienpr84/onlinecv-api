@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-export default interface IBaseController {
+export default interface BaseController {
 	crate: (req: Request, res: Response) => Promise<void>;
 	getAll: (req: Request, res: Response) => Promise<void>;
 	getById: (req: Request, res: Response) => Promise<void>;

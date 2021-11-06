@@ -1,4 +1,4 @@
-export interface ISkill {
+export default interface Skill {
 	name: string;
 	image: string;
 	strength: number;
