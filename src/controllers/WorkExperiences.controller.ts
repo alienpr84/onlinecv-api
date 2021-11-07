@@ -22,3 +22,5 @@ controller.update = async (req: Request, res: Response) => {
 controller.delete = async (req: Request, res: Response) => {
 	res.json({ message: 'delete' });
 };
+
+export default controller;
