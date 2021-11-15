@@ -1,16 +1,20 @@
 import { Express } from 'express';
-import server from 'src/app';
 import config from 'src/config';
+import server from 'src/app';
+import dbConnection from 'src/db';
 
 function main() {
-	const port = 5000; // tobe deleted
 	const app: Express = server();
+	const dbConnect = dbConnection();
+	const { version, port } = config;
+
+	console.info('App version: ' + version);
+
+	dbConnect.open();
 
 	app.listen(port, () => {
 		console.log(`Server listen on port: ${port}`);
 	});
-
-	console.log(config);
 }
 
 main();
