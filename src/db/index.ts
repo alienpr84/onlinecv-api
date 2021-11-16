@@ -1,15 +1,27 @@
-import { connect } from 'mongoose';
+import { connect, connection } from 'mongoose';
 import DbConnection from 'src/interfaces/DbConnection.interface';
 import config from 'src/config';
 
 export default function dbConnection(): DbConnection {
+	connect(config.uriDbConnection);
+
 	return {
-		open: async (): Promise<void> => {
-			await connect(config.uriDbConnection);
-			console.log('Database connected');
+		open: (): void => {
+			try {
+				connection.once('open', () => {
+					console.log('Data base connected.');
+				});
+			} catch (error) {
+				console.error(error);
+			}
 		},
 		close: async (): Promise<void> => {
-			// TODO: close db connection.
+			try {
+				await connection.close();
+				console.log('Database was desconnected.');
+			} catch (error) {
+				console.error(error);
+			}
 		},
 	};
 }

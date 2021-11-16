@@ -1,4 +1,4 @@
 export default interface DbConnection {
-	open: () => Promise<void>;
+	open: () => void;
 	close: () => Promise<void>;
 }
