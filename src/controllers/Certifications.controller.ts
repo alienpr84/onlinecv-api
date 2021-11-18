@@ -8,12 +8,12 @@ controller.create = async (req: Request, res: Response) => {
 	try {
 		const model = new CertificationModel(req.body);
 		await model.save();
-		res.status(200).json({
+		res.status(201).json({
 			message: 'Created successfully',
 			payload: model,
 		});
 	} catch (error: unknown) {
-		res.status(404).json({
+		res.status(403).json({
 			message: error instanceof Error ? error.message : String(error),
 		});
 	}
@@ -27,7 +27,7 @@ controller.getAll = async (req: Request, res: Response) => {
 			payload: models,
 		});
 	} catch (error: unknown) {
-		res.status(404).json({
+		res.status(403).json({
 			message: error instanceof Error ? error.message : String(error),
 			payload: [],
 		});
@@ -42,7 +42,7 @@ controller.getById = async (req: Request, res: Response) => {
 			payload: model,
 		});
 	} catch (error: unknown) {
-		res.status(404).json({
+		res.status(403).json({
 			message: error instanceof Error ? error.message : String(error),
 		});
 	}
@@ -56,7 +56,7 @@ controller.update = async (req: Request, res: Response) => {
 			payload: model,
 		});
 	} catch (error: unknown) {
-		res.status(404).json({
+		res.status(403).json({
 			message: error instanceof Error ? error.message : String(error),
 		});
 	}
@@ -65,11 +65,11 @@ controller.update = async (req: Request, res: Response) => {
 controller.delete = async (req: Request, res: Response) => {
 	try {
 		await CertificationModel.findByIdAndDelete(req.params.id);
-		res.status(200).json({
+		res.status(204).json({
 			message: 'Deleted successfully',
 		});
 	} catch (error: unknown) {
-		res.status(404).json({
+		res.status(403).json({
 			message: error instanceof Error ? error.message : String(error),
 		});
 	}
