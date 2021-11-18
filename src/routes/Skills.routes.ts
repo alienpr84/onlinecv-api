@@ -9,5 +9,5 @@ export default function routes(router: Router) {
 		.get(basePath + '/:id', Skills.getById)
 		.post(basePath, Skills.create)
 		.put(basePath + '/:id', Skills.update)
-		.delete(basePath + '/:id');
+		.delete(basePath + '/:id', Skills.delete);
 }

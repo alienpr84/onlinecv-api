@@ -9,7 +9,7 @@ controller.create = async (req: Request, res: Response) => {
 		const model = new CertificationModel(req.body);
 		await model.save();
 		res.status(201).json({
-			message: 'Created successfully',
+			message: 'created',
 			payload: model,
 		});
 	} catch (error: unknown) {
@@ -23,7 +23,7 @@ controller.getAll = async (req: Request, res: Response) => {
 	try {
 		const models = await CertificationModel.find();
 		res.status(200).json({
-			message: 'Collection',
+			message: 'success',
 			payload: models,
 		});
 	} catch (error: unknown) {
@@ -38,7 +38,7 @@ controller.getById = async (req: Request, res: Response) => {
 	try {
 		const model = await CertificationModel.findById(req.params.id);
 		res.status(200).json({
-			message: 'Document',
+			message: 'success',
 			payload: model,
 		});
 	} catch (error: unknown) {
@@ -50,9 +50,9 @@ controller.getById = async (req: Request, res: Response) => {
 
 controller.update = async (req: Request, res: Response) => {
 	try {
-		const model = await CertificationModel.findByIdAndUpdate(req.params.id, req.body);
+		const model = await CertificationModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
 		res.status(200).json({
-			message: 'Updated sucessfully',
+			message: 'updated',
 			payload: model,
 		});
 	} catch (error: unknown) {
@@ -66,7 +66,7 @@ controller.delete = async (req: Request, res: Response) => {
 	try {
 		await CertificationModel.findByIdAndDelete(req.params.id);
 		res.status(204).json({
-			message: 'Deleted successfully',
+			message: 'deleted',
 		});
 	} catch (error: unknown) {
 		res.status(403).json({

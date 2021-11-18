@@ -49,7 +49,7 @@ controller.getById = async (req: Request, res: Response) => {
 
 controller.update = async (req: Request, res: Response) => {
 	try {
-		const model = await PublicationModel.findByIdAndUpdate(req.params.id);
+		const model = await PublicationModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
 		res.status(200).json({
 			message: 'updated',
 			payload: model,
