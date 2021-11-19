@@ -3,16 +3,15 @@ import DbConnection from 'src/interfaces/DbConnection.interface';
 import config from 'src/config';
 
 export default function dbConnection(): DbConnection {
-	connect(config.uriDbConnection);
-
 	return {
 		open: (): void => {
 			try {
+				connect(config.uriDbConnection);
 				connection.once('open', () => {
 					console.log('Data base connected.');
 				});
 			} catch (error) {
-				console.error(error);
+				console.error(error instanceof Error ? error.message : String(error));
 			}
 		},
 		close: async (): Promise<void> => {
@@ -20,7 +19,7 @@ export default function dbConnection(): DbConnection {
 				await connection.close();
 				console.log('Database was desconnected.');
 			} catch (error) {
-				console.error(error);
+				console.error(error instanceof Error ? error.message : String(error));
 			}
 		},
 	};
